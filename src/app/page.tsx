@@ -1,3 +1,9 @@
+import { Header } from "@/sections/header";
+
 export default function Home() {
-  return <div>Hello world</div>;
+  return (
+    <>
+      <Header />
+    </>
+  );
 }
