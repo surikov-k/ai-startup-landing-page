@@ -34,10 +34,10 @@ export const Hero = () => {
       {/*End Ring 3*/}
 
       <div className="container relative mt-16">
-        <h1 className="bg-white bg-[radial-gradient(100%_100%_at_top_left,white,white,rgb(74,32,138,0.5))] bg-clip-text text-center text-8xl font-semibold tracking-tighter text-transparent md:text-[168px] md:leading-none">
+        <h1 className="bg-white bg-[radial-gradient(100%_100%_at_top_left,white,white,rgb(74,32,138,0.5))] bg-clip-text text-center text-8xl font-semibold tracking-tighter text-transparent md:text-[168px] md:leading-none md:tracking-tighter md:[margin-left:-0.05em]">
           AI SEO
         </h1>
-        <p className="mt-5 text-center text-lg text-white/70 md:mx-auto md:max-w-xl md:text-xl">
+        <p className="mt-5 text-center text-lg tracking-tight text-white/70 md:mx-auto md:max-w-xl md:text-xl">
           Elevate your site&apos;s visibility effortlessly with AI, where smart
           technology meets user-friendly SEO tools.
         </p>
