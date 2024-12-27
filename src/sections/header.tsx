@@ -23,9 +23,9 @@ const links = [
 
 export const Header = () => {
   return (
-    <header className="sticky top-0 z-10 border-b border-white/15 py-4 md:border-none">
+    <header className="sticky top-0 z-10 border-b border-white/15 py-4 backdrop-blur md:border-none md:backdrop-blur-none">
       <div className="container">
-        <div className="flex items-center justify-between backdrop-blur md:mx-auto md:max-w-2xl md:rounded-xl md:border md:border-white/20 md:p-2">
+        <div className="flex items-center justify-between md:mx-auto md:max-w-2xl md:rounded-xl md:border md:border-white/20 md:bg-[#361C66]/20 md:p-2 md:backdrop-blur">
           <div>
             <div className="inline-flex size-10 items-center justify-center rounded-lg border border-white/15">
               <LogoIcon className="size-8" />
@@ -52,4 +52,5 @@ export const Header = () => {
       </div>
     </header>
   );
+  x;
 };
