@@ -37,9 +37,9 @@ export const Features = () => {
   return (
     <section className="my-20 md:my-24">
       <div className="container">
-        <h1 className="text-center text-5xl font-medium leading-none tracking-tighter md:text-6xl md:[margin-left:-0.05em]">
+        <h2 className="text-center text-5xl font-medium leading-none tracking-tighter md:text-6xl md:[margin-left:-0.05em]">
           Elevate your SEO efforts.
-        </h1>
+        </h2>
         <p className="mt-5 text-center text-lg tracking-tight text-white/70 md:mx-auto md:max-w-xl md:text-xl">
           From small startups to large enterprises, our AI-driven tool has
           revolutionized the way businesses approach SEO.
