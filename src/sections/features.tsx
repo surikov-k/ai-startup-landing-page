@@ -1,10 +1,17 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 
-import { DotLottiePlayer } from "@dotlottie/react-player";
+import {
+  ValueAnimationTransition,
+  animate,
+  motion,
+  useMotionTemplate,
+  useMotionValue,
+} from "framer-motion";
 
 import productImage from "@/assets/product-image-2.png";
+import FeatureTab from "@/components/feature-tab";
 
 const tabs = [
   {
@@ -34,6 +41,38 @@ const tabs = [
 ];
 
 export const Features = () => {
+  const [activeTab, setActiveTab] = useState(0);
+  const backgroundPositionX = useMotionValue(tabs[0].backgroundPositionX);
+  const backgroundPositionY = useMotionValue(tabs[0].backgroundPositionY);
+  const backgroundSizeX = useMotionValue(tabs[0].backgroundSizeX);
+
+  const backgroundSize = useMotionTemplate`${backgroundSizeX}% auto`;
+  const backgroundPosition = useMotionTemplate`${backgroundPositionX}% ${backgroundPositionY}%`;
+
+  const handleSelectTab = (index: number) => {
+    setActiveTab(index);
+    const animateOptions: ValueAnimationTransition = {
+      duration: 2,
+      ease: "easeInOut",
+    };
+
+    animate(
+      backgroundSizeX,
+      [backgroundSizeX.get(), 100, tabs[index].backgroundSizeX],
+      animateOptions
+    );
+    animate(
+      backgroundPositionX,
+      [backgroundPositionX.get(), tabs[index].backgroundPositionX],
+      animateOptions
+    );
+    animate(
+      backgroundPositionY,
+      [backgroundPositionY.get(), tabs[index].backgroundPositionY],
+      animateOptions
+    );
+  };
+
   return (
     <section className="my-20 md:my-24">
       <div className="container">
@@ -46,47 +85,24 @@ export const Features = () => {
         </p>
 
         <div className="mt-10 flex flex-col gap-3 lg:flex-row">
-          {tabs.map(
-            ({
-              icon,
-              title,
-              isNew,
-              backgroundPositionX,
-              backgroundPositionY,
-              backgroundSizeX,
-            }) => (
-              <div
-                key={title}
-                className="flex flex-1 items-center gap-2.5 rounded-xl p-2.5 outline outline-1 -outline-offset-1 outline-white/15"
-              >
-                <div className="inline-flex size-12 items-center justify-center rounded-lg border border-white/15">
-                  <DotLottiePlayer src={icon} className="size-5" autoplay />
-                </div>
-                <h3 className="text-base font-medium tracking-tighter">
-                  {title}
-                </h3>
-                {isNew && (
-                  <div className="rounded-full bg-[#8c44ff] px-2 py-0.5 text-xs font-semibold text-black">
-                    new
-                  </div>
-                )}
-              </div>
-            )
-          )}
+          {tabs.map((tab, index) => (
+            <FeatureTab
+              key={tab.title}
+              onClick={() => handleSelectTab(index)}
+              selected={activeTab === index}
+              {...tab}
+            />
+          ))}
         </div>
         <div className="mt-3 rounded-xl p-2.5 outline outline-1 -outline-offset-1 outline-white/15">
-          <div
-            className="h-[170px] rounded-lg bg-cover outline outline-1 -outline-offset-1 outline-white/15 md:h-[398px] lg:h-[573px]"
+          <motion.div
+            className="h-[170px] rounded-lg outline outline-1 -outline-offset-1 outline-white/15 md:h-[398px] lg:h-[573px]"
             style={{
               backgroundImage: `url(${productImage.src})`,
-              backgroundSize: "cover", // Ensures the image covers the entire div without distortion
-              backgroundPosition: "top left", // Centers the image within the div
-              backgroundRepeat: "no-repeat", // Prevents the image from repeating
-              // backgroundPositionX: `${tabs[2].backgroundPositionX}%`,
-              // backgroundPositionY: `${tabs[2].backgroundPositionY}%`,
-              // backgroundSize: `${tabs[2].backgroundSizeX}% auto`,
+              backgroundSize,
+              backgroundPosition,
             }}
-          ></div>
+          ></motion.div>
         </div>
       </div>
     </section>
