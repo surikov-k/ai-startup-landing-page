@@ -2,13 +2,7 @@
 
 import { useRef } from "react";
 
-import {
-  motion,
-  useMotionValue,
-  useMotionValueEvent,
-  useScroll,
-  useTransform,
-} from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 import starsBg from "@/assets/stars.png";
 import Button from "@/components/button";

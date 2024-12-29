@@ -53,7 +53,7 @@ export default function FeatureTab(props: FeatureTabProps) {
     };
     animate(xPercentage, [0, 100, 100, 0, 0], options);
     animate(yPercentage, [0, 0, 100, 100, 0], options);
-  }, [selected]);
+  }, [selected, xPercentage, yPercentage]);
 
   const handleTabHover = () => {
     if (!dotLottieRef.current) {
